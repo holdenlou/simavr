@@ -23,9 +23,9 @@
 #ifndef __UART_UDP_H___
 #define __UART_UDP_H___
 
-#include "sim_network.h"
-#include "sim_irq.h"
-#include "fifo_declare.h"
+#include <simavr/sim_network.h>
+#include <simavr/sim_irq.h>
+#include <simavr/fifo_declare.h>
 
 enum {
 	IRQ_UART_UDP_BYTE_IN = 0,
