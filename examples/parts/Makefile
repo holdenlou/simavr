@@ -29,9 +29,9 @@ include ../Makefile.opengl
 
 objects := $(patsubst %.c,${OBJ}/%.o, $(wildcard *.c))
 
-# Remove uart_pty.o on Windows
+# Remove uart_pty.o and hd44780_glut.o on Windows (no PTY, no GLUT)
 ifeq (${shell uname -o}, Msys)
-objects := $(filter-out %uart_pty.o, $(objects))
+objects := $(filter-out %uart_pty.o %_glut.o, $(objects))
 endif
 
 # Unless the VHCI_USB env var is set, don't build this because it requires

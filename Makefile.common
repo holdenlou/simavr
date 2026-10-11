@@ -123,7 +123,12 @@ INSTALL		?= install
 SHELL	 	:= ${shell which bash}
 
 OBJ 		:= obj-${shell $(CC) -dumpmachine}
+ifeq (${WIN}, Msys)
+# mingw's cc cannot resolve MSYS /d/... paths; give it a Windows path.
+LIBDIR		:= ${shell cygpath -m ${shell pwd}/${SIMAVR}/${OBJ}}
+else
 LIBDIR		:= ${shell pwd}/${SIMAVR}/${OBJ}
+endif
 LDFLAGS 	+= -L${LIBDIR} -lsimavr -lm
 
 # Are libelf and/or libdwarf installed?
